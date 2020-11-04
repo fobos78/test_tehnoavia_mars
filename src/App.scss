@@ -61,3 +61,134 @@ $btn: #4260ff;
   background-position: center;
   background-size: cover;
 }
+// 768px ---------------------------------------------------------------------------------------------
+@media screen and (max-width: 768px) {
+  * {
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .App {
+    width: 768px;
+    height: 1024px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+  }
+  .wrapper {
+    width: 627px;
+    height: 774px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.8);
+    border-radius: 15px;
+  }
+  .foto{
+    width: 600px;
+    height: 577px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dataForm {
+    width: 600px;
+    height: 140px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .seletOptions {
+    width: 257px;
+    height: 45px;
+    margin-bottom: 20px;
+   
+  }
+  .btn {
+    background-color: $btn;
+    color:white;
+  }
+  .el{
+    width: 110px;
+    height:110px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+  }
+}
+// 375px ---------------------------------------------------------------------------------------------
+@media screen and (max-width: 375px) {
+  * {
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .App {
+    width: 374px;
+    height: 1450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+  }
+  .wrapper {
+    width: 374px;
+    height: 1350px;
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
+    justify-content: start;
+    align-items: flex-start;
+    background-color: rgba(128, 128, 128, 0);
+  }
+  .foto{
+    width: 350px;
+    height: 970px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: flex-start;
+    order: 1;
+    margin-top: -100px;
+  }
+  .dataForm {
+    width: 350px;
+    height: 320px;
+    display: flex;
+    order: 0;
+    margin-top: -50px;
+  }
+  .seletOptions {
+    width: 257px;
+    height: 45px;
+    margin-bottom: 20px;
+   
+  }
+  .btn {
+    background-color: $btn;
+    color:white;
+  }
+  .el{
+    width: 110px;
+    height:110px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+  }
+}

@@ -34,19 +34,22 @@ function App() {
   }
   useEffect(() => {
     async function nasa() {
-      const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${startDate}&api_key=Y5QQ8mlXl1TlyGsMjkDxFXB14S3Sy7nvHSJVGUNZ`);
-      const result = await response.json();
-      if (result.photos[0]) {
-        result.photos.forEach((el) => {
-          if (el.camera.name === camera && arr1.length < 25) {
-            arr1.push(el.img_src);
-          }
-        });
-        setFotoArr(arr1);
+      try {
+        const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${startDate}&api_key=Y5QQ8mlXl1TlyGsMjkDxFXB14S3Sy7nvHSJVGUNZ`);
+        const result = await response.json();
+        if (result.photos[0]) {
+          result.photos.forEach((el) => {
+            if (el.camera.name === camera && arr1.length < 25) {
+              arr1.push(el.img_src);
+            }
+          });
+          setFotoArr(arr1);
+        }
+      } catch (error) {
+        console.log(error);
       }
     }
     nasa();
-
   }, [count]);
 
   return (
