@@ -1,0 +1,63 @@
+$btn: #4260ff;
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.App {
+  width: 1280;
+  height: 1024px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+}
+.wrapper {
+  width: 900px;
+  height: 630px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(128, 128, 128, 0.8);
+  border-radius: 15px;
+}
+.foto{
+  width: 600px;
+  height: 100hv;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.dataForm {
+  width: 257px;
+  height: 100hv;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.seletOptions {
+  width: 257px;
+  height: 45px;
+  margin-bottom: 20px;
+ 
+}
+.btn {
+  background-color: $btn;
+  color:white;
+}
+.el{
+  width: 110px;
+  height:110px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+}
