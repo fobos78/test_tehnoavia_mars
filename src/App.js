@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-// import { obj } from './test';
+// import { obj } from './test';// тестируем что бы не использовать API
 import Modal from './component/Modal';
 import './App.scss';
 
 function App() {
+  // массив фото на каждый месяц для фона
   const fotoUrl = [
     'https://all-anapa.ru/uploads/media/2krasota_anapi_.jpg',
     'https://all-anapa.ru/uploads/media/4krasota_anapi_.jpg',
@@ -24,9 +25,9 @@ function App() {
   const [startDate, setStartDate] = useState('2015-05-24');
   const [camera, setCamera] = useState('MAST');
   const [fotoArr, setFotoArr] = useState([]);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);// зависимость, можно узнать сколько раз делали запрос в сессию
   const [modal, setModal] = useState(false);
-  const [bg, setBg] = useState('');
+  const [bg, setBg] = useState('');// фото для модального окна
 
   function changeCamera(event) {
     setCamera(event.target.value);
@@ -46,6 +47,7 @@ function App() {
         const result = await response.json();
         if (result.photos[0]) {
           result.photos.forEach((el) => {
+            arr1.sort(() => Math.round(Math.random() * 100) - 50);// выдаем случайным образом
             if (el.camera.name === camera && arr1.length < 25) {
               arr1.push(el.img_src);
             }
@@ -61,35 +63,35 @@ function App() {
 
   return (
     <>
-        {
-          modal && <Modal setModal={setModal} bg={bg} />
-        }
-    <div className="App" style={{ backgroundImage: `url(${fotoUrl[+startDate.split('-').splice(1, 1) - 1]})` }}>
-      <div className="App__wrapper">
-        <div className="App__wrapper__foto">
-          {
-            (fotoArr[0] ? fotoArr.map((el, i) => {
-              return (
-                <div className="el" key={Math.random()} style={{ backgroundImage: `url(${fotoArr[i]})` }} onClick={()=> changeModal(fotoArr[i])}>
-                </div>
-              )
-            }) : <h2>Нет фото</h2>)
-          }
-        </div>
-        <div className="App__wrapper__dataForm">
-          <select className="seletOptions">
-            <option>Curiosity</option>
-          </select>
-          <select className="seletOptions" value={camera} onChange={changeCamera}>
-            <option>FHAZ</option>
-            <option>RHAZ</option>
-            <option selected>MAST</option>
-          </select>
-          <input type="date" className="seletOptions" value={startDate} onChange={changeInput} />
-          <button className="seletOptions btn" onClick={() => { setCount(() => count + 1); }}>Искать</button>
+      {
+        modal && <Modal setModal={setModal} bg={bg} />
+      }
+      <div className="App" style={{ backgroundImage: `url(${fotoUrl[+startDate.split('-').splice(1, 1) - 1]})` }}>
+        <div className="App__wrapper">
+          <div className="App__wrapper__foto">
+            {
+              (fotoArr[0] ? fotoArr.map((el, i) => {
+                return (
+                  <div className="el" key={Math.random()} style={{ backgroundImage: `url(${fotoArr[i]})` }} onClick={() => changeModal(fotoArr[i])}>
+                  </div>
+                )
+              }) : <h2>Нет фото</h2>)
+            }
+          </div>
+          <div className="App__wrapper__dataForm">
+            <select className="seletOptions">
+              <option>Curiosity</option>
+            </select>
+            <select className="seletOptions" value={camera} onChange={changeCamera}>
+              <option>FHAZ</option>
+              <option>RHAZ</option>
+              <option selected>MAST</option>
+            </select>
+            <input type="date" className="seletOptions" value={startDate} onChange={changeInput} />
+            <button className="seletOptions btn" onClick={() => { setCount(() => count + 1); }}>Искать</button>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
