@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 // import { obj } from './test';
+import Modal from './component/Modal';
 import './App.scss';
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
   const [camera, setCamera] = useState('MAST');
   const [fotoArr, setFotoArr] = useState([]);
   const [count, setCount] = useState(0);
+  const [modal, setModal] = useState(false);
+  const [bg, setBg] = useState('');
 
   function changeCamera(event) {
     setCamera(event.target.value);
@@ -31,6 +34,10 @@ function App() {
 
   function changeInput(event) {
     setStartDate(event.target.value);
+  }
+  function changeModal(url) {
+    setModal(true);
+    setBg(url);
   }
   useEffect(() => {
     async function nasa() {
@@ -53,19 +60,23 @@ function App() {
   }, [count]);
 
   return (
+    <>
+        {
+          modal && <Modal setModal={setModal} bg={bg} />
+        }
     <div className="App" style={{ backgroundImage: `url(${fotoUrl[+startDate.split('-').splice(1, 1) - 1]})` }}>
-      <div className="wrapper">
-        <div className="foto">
+      <div className="App__wrapper">
+        <div className="App__wrapper__foto">
           {
-            fotoArr[0] ? fotoArr.map((el, i) => {
+            (fotoArr[0] ? fotoArr.map((el, i) => {
               return (
-                <div className="el" key={Math.random()} style={{ backgroundImage: `url(${fotoArr[i]})` }}>
+                <div className="el" key={Math.random()} style={{ backgroundImage: `url(${fotoArr[i]})` }} onClick={()=> changeModal(fotoArr[i])}>
                 </div>
               )
-            }) : <h2>Нет фото</h2>
+            }) : <h2>Нет фото</h2>)
           }
         </div>
-        <div className="dataForm">
+        <div className="App__wrapper__dataForm">
           <select className="seletOptions">
             <option>Curiosity</option>
           </select>
@@ -79,6 +90,7 @@ function App() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
